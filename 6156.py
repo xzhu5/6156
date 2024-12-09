@@ -38,7 +38,7 @@ import joblib
 
 
 # Load the data
-data = pd.read_csv(natality2023ps.csv)
+data = pd.read_csv("natality2023ps.csv")
 
 # Select relevant features based on the previous list (adjust column names as needed)
 features = [
