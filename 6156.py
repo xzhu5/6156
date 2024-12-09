@@ -9,14 +9,8 @@ Original file is located at
 
 import pandas as pd
 
-from google.colab import drive
-drive.mount('/content/drive')
-
-# File path in Google Drive
-file_path = '/content/drive/My Drive/natality2023ps.csv'
-
 # Load the data
-data = pd.read_csv(file_path)
+data = pd.read_csv("natality2023ps.csv")
 
 # Keep only relevant variables
 data = data[['mager', 'mrace31', 'meduc', 'pwgt_r', 'wtgain', 'bmi', 'cig_0',
@@ -41,14 +35,9 @@ from sklearn.metrics import mean_absolute_error
 from sklearn.preprocessing import StandardScaler
 import joblib
 
-from google.colab import drive
-drive.mount('/content/drive')
-
-# File path in Google Drive
-file_path = '/content/drive/My Drive/natality2023ps.csv'
 
 # Load the data
-data = pd.read_csv(file_path)
+data = pd.read_csv(natality2023ps.csv)
 
 # Select relevant features based on the previous list (adjust column names as needed)
 features = [
