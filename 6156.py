@@ -22,12 +22,6 @@ data.describe(include='all').T
 #Look at data types, non-null counts and data types
 data.info()
 
-#Null Counts per column
-data.isnull().sum()
-
-#Null % per each column
-(data.isnull().sum()/(len(data)))*100
-
 import pandas as pd
 import sklearn
 from sklearn.model_selection import train_test_split
