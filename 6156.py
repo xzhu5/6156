@@ -76,7 +76,7 @@ print(f"Mean Absolute Error: {mae}")
 
 # Optional: feature importance analysis
 importances = model.feature_importances_
-#feature_names = X_train.columns # X_train is now a numpy array after scaling
+feature_names = X_train.columns # X_train is now a numpy array after scaling
 feature_importances = pd.DataFrame({'feature': feature_names, 'importance': importances}) # Use feature_names obtained before scaling
 feature_importances = feature_importances.sort_values(by='importance', ascending=False)
 print(feature_importances)
