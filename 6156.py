@@ -29,7 +29,7 @@ data.isnull().sum()
 (data.isnull().sum()/(len(data)))*100
 
 import pandas as pd
-pip install -U scikit-learn
+import scikit-learn
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_absolute_error
