@@ -14,9 +14,19 @@ data = pd.read_csv("natality2023ps.csv")
 
 # Drop rows where apgar5 is 99
 data = data[data['apgar5'] != 99]
+data = data[data['meduc'] != 9]
+data = data[data['pwgt_r'] != 999]
+data = data[data['wtgain'] != 99]
+data = data[data['bmi'] != 99.9]
+data = data[data['cig_0'] != 99]
+data = data[data['precare'] != 99]
+data = data[data['previs'] != 99]
+data = data[data['rf_pdiab'] != 'U']
+data = data[data['rf_pdiab'] != 'U']
+data = data[data['pay'] != 9]
 
 # Keep only relevant variables
-data = data[['mager', 'mrace31', 'meduc', 'pwgt_r', 'wtgain', 'bmi', 'cig_0',
+data = data[['mager', 'mrace6', 'meduc', 'pwgt_r', 'wtgain', 'bmi', 'cig_0',
     'precare', 'previs', 'rf_pdiab', 'rf_phype', 'dplural', 'pay']]
 
 #Look at data spread including object variables (transposed)
@@ -39,6 +49,17 @@ data = pd.read_csv("natality2023ps.csv")
 
 # Drop rows where apgar5 is 99
 data = data[data['apgar5'] != 99]
+data = data[data['meduc'] != 9]
+data = data[data['pwgt_r'] != 999]
+data = data[data['wtgain'] != 99]
+data = data[data['bmi'] != 99.9]
+data = data[data['cig_0'] != 99]
+data = data[data['precare'] != 99]
+data = data[data['previs'] != 99]
+data = data[data['rf_pdiab'] != 'U']
+data = data[data['rf_pdiab'] != 'U']
+data = data[data['pay'] != 9]
+
 
 # Select relevant features based on the previous list (adjust column names as needed)
 features = [
