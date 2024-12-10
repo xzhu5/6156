@@ -37,6 +37,9 @@ import joblib
 # Load the data
 data = pd.read_csv("natality2023ps.csv")
 
+# Drop rows where apgar5 is 99
+data = data[data['apgar5'] != 99]
+
 # Select relevant features based on the previous list (adjust column names as needed)
 features = [
     'mager', 'mrace6', 'meduc', 'pwgt_r', 'wtgain', 'bmi', 'cig_0',
