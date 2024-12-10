@@ -12,6 +12,9 @@ import pandas as pd
 # Load the data
 data = pd.read_csv("natality2023ps.csv")
 
+# Drop rows where apgar5 is 99
+data = data[data['apgar5'] != 99]
+
 # Keep only relevant variables
 data = data[['mager', 'mrace31', 'meduc', 'pwgt_r', 'wtgain', 'bmi', 'cig_0',
     'precare', 'previs', 'rf_pdiab', 'rf_phype', 'dplural', 'pay']]
