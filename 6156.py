@@ -27,7 +27,7 @@ import sklearn
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_absolute_error
-from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import StandardScaler, LabelEncoder
 import joblib
 
 
@@ -49,19 +49,19 @@ y = data[target]
 # Handle missing values
 X = X.dropna()
 
-# Encode categorical variables (One-Hot Encoding or Label Encoding)
-X = pd.get_dummies(X, drop_first=True)
+# Encode categorical variables with LabelEncoder for rf_pdiab and rf_phype
+label_encoder = LabelEncoder()
 
-# Get feature names before scaling
-feature_names = X.columns # Get feature names before StandardScaler
+for column in ['rf_pdiab', 'rf_phype']:
+    X[column] = label_encoder.fit_transform(X[column].astype(str))  # Ensure all data is string before encoding
 
-# Standardize numerical features if needed
+# Standardize numerical features (excluding other categorical variables)
+numerical_features = ['mager', 'pwgt_r', 'wtgain', 'bmi', 'cig_0', 'precare', 'previs']
 scaler = StandardScaler()
-X = scaler.fit_transform(X)
+X[numerical_features] = scaler.fit_transform(X[numerical_features])
 
 # Split the data into training and test sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-
 
 # Initialize and train the Random Forest Regressor
 model = RandomForestRegressor(n_estimators=100, random_state=42)
@@ -76,7 +76,7 @@ print(f"Mean Absolute Error: {mae}")
 
 # Optional: feature importance analysis
 importances = model.feature_importances_
-feature_importances = pd.DataFrame({'feature': feature_names, 'importance': importances}) # Use feature_names obtained before scaling
+feature_importances = pd.DataFrame({'feature': X.columns, 'importance': importances})
 feature_importances = feature_importances.sort_values(by='importance', ascending=False)
 print(feature_importances)
 
